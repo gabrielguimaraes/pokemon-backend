@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  main_app_pokemon-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: main_app_pokemon
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  default:
+    name: pokemon-network
