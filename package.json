@@ -8,7 +8,9 @@
     "dev": "nodemon server.js",
     "build": "esbuild server.js --bundle --platform=node --outfile=dist/server.js",
     "docker:build": "docker build -t pokemon-backend .",
-    "docker:run": "docker run -p 3001:3001 pokemon-backend"
+    "docker:run": "docker run -p 3001:3001 pokemon-backend",
+    "deploy": "bash ../pokemon-frontend/deploy.sh --backend-only",
+    "deploy:skip-build": "bash ../pokemon-frontend/deploy.sh --backend-only --skip-build"
   },
   "keywords": [
     "pokemon",
